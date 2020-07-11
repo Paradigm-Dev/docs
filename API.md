@@ -5,8 +5,8 @@ Documentation for the backbone of Paradigm: Relay's API.
 
 
 ## Table of Contents
-1. [Index](https://github.com/Paradigm-Dev/docs/blobl/master/API.md#index)
-2. [Authentication](https://github.com/Paradigm-Dev/docs/blobl/master/API.md#authentication)
+1. [Index](https://github.com/Paradigm-Dev/docs/blob/master/API.md#index)
+2. [Authentication](https://github.com/Paradigm-Dev/docs/blob/master/API.md#authentication)
 3. [Broadcast](https://github.com/Paradigm-Dev/docs/blob/master/API.md#broadcast)
 4. [Drawer](https://github.com/Paradigm-Dev/docs/blob/master/API.md#drawer)
 5. [Flamechat](https://github.com/Paradigm-Dev/docs/blob/master/API.md#flamechat)
