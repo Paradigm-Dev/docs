@@ -1,7 +1,7 @@
 [<img src="https://www.theparadigmdev.com/relay/img/paradigm.png" alt="Logo" width="150" height="150"></img>](https://www.theparadigmdev.com/)
 # Terminal
 
-The terminal is the administrative interface to the database. It is only accessible by administrators.
+The terminal is the administrative interface to the database. It is only accessible by administrators. To access the Terminal, open the navigation drawer and click the Terminal button, it is in between your username and the log out button. Please do not abuse the Terminal. All Terminal actions are logged. Any abuse of the Terminal system will result in account deletion and IP ban.
 
 ## Table of Contents
 1. [`set`](https://github.com/Paradigm-Dev/docs/blob/master/Terminal.md#set)
@@ -64,7 +64,7 @@ This command bans the entered public IP address from accessing any part of Parad
 This command clears the console.
 
 ## `nuke`
-This command should only be used if all else fails. It physically shuts down the database and Relay. No new connections to the website will be able to be established. Existing ones are disconnected.
+This command should only be used if all else fails. It physically shuts down the database and Relay. The server will have to be manually restarted. No new connections to the website will be able to be established. Existing ones are disconnected.
 
 ## Dictionary
 This is a list of the various "all-caps" command arguments used above.
