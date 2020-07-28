@@ -15,7 +15,7 @@ Documentation for the backbone of Paradigm: Relay's API.
 8. [People](https://github.com/Paradigm-Dev/docs/blob/master/API.md#people)
 9. [Terminal](https://github.com/Paradigm-Dev/docs/blob/master/API.md#terminal)
 10. [Transmission](https://github.com/Paradigm-Dev/docs/blob/master/API.md#transmission)
-11. [Users](https://github.com/Paradigm-Dev/docs/blob/master/API.md#users)
+11. [User](https://github.com/Paradigm-Dev/docs/blob/master/API.md#user)
 <hr>
 
 
@@ -54,13 +54,13 @@ interface {
 return User
 ```
 
-### `GET /api/users/signout`
+### `GET /api/:uid/auth/signout`
 Deauthenticates an existing user, who is already signed in.
 ```ts
 return null
 ```
 
-### `POST /api/users/reset`
+### `POST /api/:uid/auth/reset`
 Resets a user's password.
 ```ts
 interface {
@@ -69,6 +69,15 @@ interface {
 }
 
 return User
+```
+
+### `GET /api/auth/check/:username`
+Checks if a username exists and is logged in.
+```ts
+return interface {
+  exists: boolean
+  in: boolean
+}
 ```
 <hr>
 
@@ -240,10 +249,32 @@ Gets a list of books.
 return Book[]
 ```
 
+### `POST /api/:uid/media/books/:id`
+Updates stored data for a book in a user.
+```ts
+interface {
+  rating: number
+  favorite: boolean
+}
+
+return User
+```
+
 ### `GET /api/:uid/media/movies`
 Gets a list of movies.
 ```ts
 return Movie[]
+```
+
+### `POST /api/:uid/media/movies/:id`
+Updates stored data for a movie in a user.
+```ts
+interface {
+  rating: number
+  favorite: boolean
+}
+
+return User
 ```
 
 ### `GET /api/:uid/media/music`
@@ -251,6 +282,18 @@ Gets a list of albums.
 ```ts
 return Music[]
 ```
+
+### `POST /api/:uid/media/music/:id`
+Updates stored data for an album in a user.
+```ts
+interface {
+  rating: number
+  favorite: boolean
+}
+
+return User
+```
+
 
 ### `POST /api/:uid/media/data`
 Creates a new media item. This saves the data, not the files. Music is not working at the moment.
@@ -310,8 +353,50 @@ return News[]
 
 
 ## People
+### `GET /api/:uid/people`
+Returns a list of all users.
+```ts
+return User[]
+```
+
+### `GET /api/:uid/people/short`
+Returns a list of all users, with less data.
+```ts
+return User[]
+```
+
 ### `GET /api/:uid/people/request/:user/send`
 Sends a friend request to someone else.
+```ts
+return User
+```
+
+### `GET /api/:uid/people/request/:user/approve`
+Approves a friend request from someone else.
+```ts
+return User
+```
+
+### `DELETE /api/:uid/people/request/:user/reject`
+Rejects/retracts a friend request from someone else.
+```ts
+return User
+```
+
+### `DELETE /api/:uid/people/remove/:user`
+Removes a friend.
+```ts
+return User
+```
+
+### `DELETE /api/:uid/people/block/:user`
+Blocks another user.
+```ts
+return User
+```
+
+### `DELETE /api/:uid/people/unblock/:user`
+Unblocks another user.
 ```ts
 return User
 ```
@@ -322,7 +407,7 @@ return User
 ### `GET /api/:uid/terminal/user/:username/view`
 Sends information about a user.
 ```ts
-interface Data {
+return interface {
   _id: ObjectId
   username: string
   color: string
@@ -339,10 +424,6 @@ interface Data {
   strikes: number
   in: boolean
 }
-
-const data: Data
-
-return data
 ```
 
 ### `PUT /api/:uid/terminal/user/:username/strike/:count`
@@ -360,40 +441,28 @@ return null
 ### `GET /api/:uid/terminal/list/users`
 Gets a list of usernames and IDs.
 ```ts
-interface Data {
+return interface [] {
   _id: ObjectId
   username: string
 }
-
-const data: Data
-
-return data[]
 ```
 
 ### `GET /api/:uid/terminal/list/chatrooms`
 Gets a list of chatrooms and their IDs.
 ```ts
-interface Data {
+return interface [] {
   id: string
   title: string
 }
-
-const data: Data
-
-return data[]
 ```
 
 ### `GET /api/:uid/terminal/list/books`
 Gets a list of books and their authors.
 ```ts
-interface Data {
+return interface [] {
   title: string
   author: string
 }
-
-const data: Data
-
-return data[]
 ```
 
 ### `GET /api/:uid/terminal/list/movies`
@@ -405,23 +474,60 @@ return string[]
 ### `GET /api/:uid/terminal/list/music`
 Gets a list of albums and their artists.
 ```ts
-interface Data {
+return interface [] {
   _id: ObjectId
   username: string
 }
-
-const data: Data
-
-return data[]
 ```
 <hr>
 
 
 ## Transmission
-No endpoints, yet :/
+*Placeholder*
 <hr>
 
 
-## Users
-No endpoints, yet :/
+## User
+### `POST /api/:uid/user/update`
+Updates the user's profile.
+```ts
+interface {
+  username: string
+  bio: string
+  color: string
+}
+
+return User
+```
+
+### `GET /api/:uid/user/:user`
+Gets information about a user.
+```ts
+return interface {
+  _id: string
+  username: string
+  color: string
+  in: boolean
+  bio: string
+  pic: string
+}
+```
+
+### `PUT /api/:uid/user/moonrocks/:count`
+Adds/removes moonrocks.
+```ts
+return User
+```
+
+### `POST /api/:uid/user/pic`
+Replaces profile pic.
+```ts
+return User
+```
+
+### `DELETE /api/:uid/user`
+Deletes a user.
+```ts
+return null
+```
 <!-- <hr> -->
