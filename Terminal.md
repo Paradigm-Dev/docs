@@ -40,6 +40,8 @@ If the user is logged in, they are logged out. Otherwise, nothing happens.
 This deletes the specified user's account.
 #### `user [username] rocks [number]`
 Adds or subtracts (by using a negative number) a number of Moonrocks to/from the user's account.
+#### `user [username] rename [new_username]`
+Changes a user's username.
 
 ## `list`
 This command outputs database collections.
